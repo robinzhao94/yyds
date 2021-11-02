@@ -8,7 +8,7 @@
         <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.rootcloud</groupId>
+    <groupId>com.github</groupId>
     <artifactId>yyds-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>应用大神网关服务</name>
@@ -24,7 +24,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.rootcloud</groupId>
+            <groupId>com.github</groupId>
             <artifactId>yyds-common</artifactId>
             <version>1.0.0</version>
         </dependency>

@@ -1,10 +1,10 @@
-package com.rootcloud.yyds.common;
+package com.github.yyds.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class YydsCommonApplicationTests {
+class YydsGatewayApplicationTests {
 
     @Test
     void contextLoads() {

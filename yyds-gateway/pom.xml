@@ -11,7 +11,7 @@
     <groupId>com.github</groupId>
     <artifactId>yyds-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>应用大神网关服务</name>
+    <name>应用大圣网关服务</name>
     <description>yyds-gateway</description>
     <properties>
         <java.version>1.8</java.version>

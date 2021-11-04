@@ -8,6 +8,7 @@
     <artifactId>yyds</artifactId>
     <version>${project.version}</version>
     <packaging>pom</packaging>
+    <name>应用大圣聚合服务</name>
 
     <properties>
         <project.version>1.0.0-SNAPSHOT</project.version>

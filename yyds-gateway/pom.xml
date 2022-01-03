@@ -10,7 +10,7 @@
     </parent>
     <artifactId>yyds-gateway</artifactId>
     <version>1.0.0</version>
-    <name>应用大圣-网关服务</name>
+    <name>应用大圣-统一网关服务</name>
     <description>yyds-gateway</description>
 
     <dependencies>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <parent>
+        <artifactId>yyds-parent</artifactId>
+        <groupId>icu.oo7</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>yyds-admin</artifactId>
+    <name>应用大圣-后台管理服务</name>
+
+    <modules>
+        <module>yyds-admin-rbac</module>
+        <module>yyds-admin-clients</module>
+        <module>yyds-admin-job</module>
+        <module>yyds-admin-oss</module>
+    </modules>
+
+    <properties>
+        <yyds.version>1.0.0</yyds.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.oo7</groupId>
+            <artifactId>yyds-db-dependencies</artifactId>
+            <version>${yyds.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,32 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: yyds-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          # 启用自动根据服务ID生成路由
+          enabled: true
+          # 设置路由的路径为小写的服务ID
+          lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-origins: '*'
+            allowed-headers: '*'
+            allowed-methods:
+              - GET
+              - POST
+              - OPTIONS
+              - DELETE
+              - PUT
+              - HEAD
+              - PATCH
+            max-age: 3600
+        add-to-simple-url-handler-mapping: true

@@ -3,27 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>icu.oo7</groupId>
     <artifactId>yyds-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>应用大圣-聚合服务</name>
+    <description>应用大圣</description>
 
     <properties>
-        <skipTests>true</skipTests>
-        <yyds.dependencies.version>1.0.0</yyds.dependencies.version>
         <java.version>1.8</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <yyds.dependencies.version>1.0.0</yyds.dependencies.version>
     </properties>
 
     <modules>
-        <module>yyds-gateway</module>
         <module>yyds-dependencies</module>
+        <module>yyds-gateway</module>
         <module>yyds-common</module>
+        <module>yyds-uaa</module>
+        <module>yyds-admin</module>
     </modules>
 
     <dependencyManagement>

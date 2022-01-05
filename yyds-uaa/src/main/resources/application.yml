@@ -9,23 +9,44 @@ spring:
     username: cli_users
     password: KJDjifdf343A
     hikari:
-      # \u8FDE\u63A5\u6C60\u540D\u79F0
+      # 连接池名称，HikariPool-1
       pool-name: HikariCP
-      # \u81EA\u52A8\u63D0\u4EA4\u4ECE\u6C60\u4E2D\u8FD4\u56DE\u7684\u8FDE\u63A5
+      # 自动提交从池中返回的连接
       auto-commit: true
-      # \u6C60\u4E2D\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA410
+      # 池中维护的最小空闲连接数，默认10
       minimum-idle: 5
-      # \u7A7A\u95F2\u8FDE\u63A5\u6700\u5927\u5B58\u6D3B\u65F6\u95F4\uFF0C\u9ED8\u8BA4\u4E3A600000\uFF0810min\uFF09
+      # 连接允许在池中闲置的最长时间，默认600000（10min）
       idle-timeout: 600000
-      # \u6C60\u4E2D\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u5305\u62EC\u7A7A\u95F2\u8FDE\u63A5\u548C\u4F7F\u7528\u4E2D\u7684\u8FDE\u63A5\uFF0C\u9ED8\u8BA410
+      # 池中最大连接数，包括闲置和使用中的连接
       maximum-pool-size: 20
-      # \u6C60\u4E2D\u8FDE\u63A5\u6700\u957F\u751F\u547D\u5468\u671F\uFF0C\u9ED8\u8BA4\u4E3A1800000\uFF0830min\uFF09\uFF0C0-\u65E0\u9650\u751F\u547D\u5468\u671F\uFF0C!=0&<30sec\u4F1A\u91CD\u7F6E\u4E3A30min
+      # 池中最长连接生命周期，默认1800000（30min）
       max-lifetime: 1800000
-      # \u6570\u636E\u5E93\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4\uFF0C\u9ED8\u8BA4\u4E3A30sec\uFF0C\u5982\u679C\u5C0F\u4E8E250ms\u4F1A\u91CD\u7F6E\u4E3A30sec
+      # 从池中获取连接等待超时毫秒数，默认30000（30sec）
       connection-timeout: 30000
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   type-aliases-package: icu.oo7.yyds.uaa.domain
   global-config:
     db-config:
       id-type: auto
+feign:
+  # 使用Okhttp替代feign底层JDK原生的URLConnection
+  okhttp:
+    enabled: true
+  # 开启请求压缩
+  compression:
+    request:
+      enabled: true
+      # 可以被压缩的内容
+      mime-types:
+        - text/xml
+        - application/xml
+        - application/json
+      min-request-size: 2048 # 超过2048字节进行压缩
+  # 开启 sentinel 熔断降级
+  sentinel:
+    enabled: true

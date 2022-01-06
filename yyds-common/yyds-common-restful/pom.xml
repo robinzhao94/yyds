@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>yyds-common-rest</artifactId>
+    <artifactId>yyds-common-restful</artifactId>
     <name>应用大圣-公共服务-restful服务</name>
 
     <dependencies>

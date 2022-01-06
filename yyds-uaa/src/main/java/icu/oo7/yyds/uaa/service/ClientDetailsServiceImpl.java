@@ -28,6 +28,7 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
      * @param clientId 客户端ID
      * @return 客户端信息
      */
+    @Override
     @SneakyThrows
     public ClientDetails loadClientByClientId(String clientId) {
         ResponseData<ClientDetailsDTO> response = clientFeignService.getClientById(clientId);

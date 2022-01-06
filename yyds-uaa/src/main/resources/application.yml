@@ -1,3 +1,4 @@
+# keytool -genkey -alias yyds -keyalg RSA -keypass 2wsx#EDC -keystore yyds.jks -storepass 4rfv#EDC
 server:
   port: 8092
 spring:

@@ -20,7 +20,7 @@
     </properties>
 
     <modules>
-        <module>yyds-common-rest</module>
+        <module>yyds-common-restful</module>
         <module>yyds-common-util</module>
         <module>yyds-common-domain</module>
     </modules>

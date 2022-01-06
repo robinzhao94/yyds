@@ -59,10 +59,9 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-
         <dependency>
             <groupId>icu.oo7</groupId>
-            <artifactId>yyds-common-rest</artifactId>
+            <artifactId>yyds-common-restful</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

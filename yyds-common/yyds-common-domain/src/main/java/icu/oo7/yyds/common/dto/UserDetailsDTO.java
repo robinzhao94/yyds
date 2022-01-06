@@ -6,14 +6,19 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Oauth2客户端数据传输对象
+ * 平台用户信息传输对象
  *
  * @author peng.zhao
  */
 @Data
-public class ClientDetailsDTO implements Serializable {
+public class UserDetailsDTO implements Serializable {
 
-    private static final long serialVersionUID = -5602937381699674476L;
+    private static final long serialVersionUID = -286971866427130259L;
+
+    /**
+     * 用户名
+     */
+    private String username;
 
     /**
      * 客户端ID
@@ -24,4 +29,5 @@ public class ClientDetailsDTO implements Serializable {
      * 客户端可访问资源集合
      */
     private List<String> resourceIds;
+
 }

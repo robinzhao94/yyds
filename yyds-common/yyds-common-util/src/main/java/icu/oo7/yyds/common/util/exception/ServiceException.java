@@ -1,5 +1,10 @@
 package icu.oo7.yyds.common.util.exception;
 
+/**
+ * 系统业务异常类
+ *
+ * @author peng.zhao
+ */
 public class ServiceException extends RuntimeException {
 
     private static final long serialVersionUID = -5535111126670819149L;

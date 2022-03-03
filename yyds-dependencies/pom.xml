@@ -7,46 +7,35 @@
     <groupId>icu.oo7</groupId>
     <artifactId>yyds-dependencies</artifactId>
     <version>1.0.0</version>
-    <modules>
-        <module>yyds-db-dependencies</module>
-    </modules>
     <packaging>pom</packaging>
     <name>应用大圣-依赖管理模块</name>
 
     <properties>
-        <springboot.version>2.3.12.RELEASE</springboot.version>
-        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.2.7.RELEASE</spring.cloud.alibaba.version>
+        <yyds.cloud.version>1.0.0</yyds.cloud.version>
+        <yyds.mybatis.version>1.0.0</yyds.mybatis.version>
         <lombok.version>1.18.16</lombok.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <mysql-connector-java.version>8.0.17</mysql-connector-java.version>
-        <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
         <feign.okhttp.version>11.8</feign.okhttp.version>
     </properties>
 
+    <modules>
+        <module>yyds-mybatis-dependencies</module>
+        <module>yyds-cloud-dependencies</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
-            <!-- springboot 依赖 -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${springboot.version}</version>
+                <groupId>icu.oo7</groupId>
+                <artifactId>yyds-cloud-dependencies</artifactId>
+                <version>${yyds.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- spring cloud 依赖 -->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- spring cloud alibaba 依赖 -->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring.cloud.alibaba.version}</version>
+                <groupId>icu.oo7</groupId>
+                <artifactId>yyds-mybatis-dependencies</artifactId>
+                <version>${yyds.mybatis.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -59,16 +48,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql-connector-java.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.openfeign</groupId>

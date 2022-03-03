@@ -14,6 +14,7 @@
 
     <properties>
         <yyds.version>1.0.0</yyds.version>
+        <yyds.common.version>1.0.0</yyds.common.version>
     </properties>
 
     <dependencies>
@@ -35,11 +36,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>icu.oo7</groupId>
-            <artifactId>yyds-db-dependencies</artifactId>
-            <version>${yyds.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
@@ -52,6 +48,10 @@
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
@@ -62,12 +62,17 @@
         <dependency>
             <groupId>icu.oo7</groupId>
             <artifactId>yyds-common-restful</artifactId>
-            <version>1.0.0</version>
+            <version>${yyds.common.version}</version>
         </dependency>
         <dependency>
             <groupId>icu.oo7</groupId>
             <artifactId>yyds-common-domain</artifactId>
-            <version>1.0.0</version>
+            <version>${yyds.common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>icu.oo7</groupId>
+            <artifactId>yyds-common-util</artifactId>
+            <version>${yyds.common.version}</version>
         </dependency>
     </dependencies>
 

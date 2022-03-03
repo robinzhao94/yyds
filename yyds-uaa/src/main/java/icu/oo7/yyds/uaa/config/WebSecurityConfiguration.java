@@ -25,6 +25,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated().and().csrf().disable();
     }
 
+    /**
+     * 注入AuthenticationManager接口，启用OAuth2密码模式
+     */
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

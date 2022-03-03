@@ -14,9 +14,7 @@
     <name>应用大圣-公共模块</name>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <mybatis.plus.version>3.3.1</mybatis.plus.version>
+        <yyds.version>1.0.0</yyds.version>
     </properties>
 
     <modules>
@@ -29,13 +27,8 @@
         <dependencies>
             <dependency>
                 <groupId>icu.oo7</groupId>
-                <artifactId>yyds-common-util</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus</artifactId>
-                <version>${mybatis.plus.version}</version>
+                <artifactId>yyds-dependencies</artifactId>
+                <version>1.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

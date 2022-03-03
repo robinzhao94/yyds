@@ -1,6 +1,7 @@
 package icu.oo7.yyds.uaa.config;
 
-import icu.oo7.yyds.common.dto.UserAuthenticationDTO;
+import icu.oo7.yyds.common.dto.UserDetailsDTO;
+import icu.oo7.yyds.common.util.constant.AuthContants;
 import icu.oo7.yyds.uaa.service.UserDetailsServiceImpl;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
-import javax.sql.DataSource;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.Map;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    private DataSource dataSource;
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -51,22 +51,28 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     /**
-     * 配置授权（authorization）以及令牌（token）的访问端点和令牌服务（token service）
+     * 配置授权服务器端点的非安全功能，如令牌存储、令牌自定义、用户批准和授权类型
      */
+    @Override
     @SneakyThrows
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints, KeyPair keyPair) {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         List<TokenEnhancer> tokenEnhancers = new ArrayList<>();
         tokenEnhancers.add(tokenEnhancer());
-        tokenEnhancers.add(jwtAccessTokenConverter(keyPair));
+        tokenEnhancers.add(jwtAccessTokenConverter());
         tokenEnhancerChain.setTokenEnhancers(tokenEnhancers);
-        endpoints.authenticationManager(authenticationManager)
-                .accessTokenConverter(jwtAccessTokenConverter(keyPair))
+        // 配置授权服务器端点的属性和增强功能
+        endpoints
+                 // 用于密码认证的 AuthenticationManager。
+                .authenticationManager(authenticationManager)
+                .accessTokenConverter(jwtAccessTokenConverter())
+                 // token 增强配置
                 .tokenEnhancer(tokenEnhancerChain)
+                 // 加载用户特定数据的核心接口
                 .userDetailsService(userDetailsService)
-                // refresh token有两种使用方式：重复使用-true、非重复使用-false，默认-true
-                // 1 重复使用：access token过期刷新时， refresh token过期时间未改变，仍以初次生成的时间为准
-                // 2 非重复使用：access token过期刷新时， refresh token过期时间延续，在refresh token有效期内刷新便永不失效达到无需再次登录的目的
+                // refresh token 有两种使用方式：重复使用-true、非重复使用-false，默认-true
+                // 1.重复使用：access token 过期刷新时，refresh token 过期时间未改变，仍以初次生成的时间为准
+                // 2.非重复使用：access token 过期刷新时，refresh token 过期时间延续，在 refresh token 有效期内刷新便永不失效达到无需再次登录的目的
                 .reuseRefreshTokens(true);
     }
 
@@ -77,10 +83,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     public TokenEnhancer tokenEnhancer() {
         return (accessToken,  authentication) -> {
             Map<String, Object> additionalInformation = new HashMap<>();
-            UserAuthenticationDTO userAuthentication = (UserAuthenticationDTO)authentication.getUserAuthentication().getPrincipal();
-            additionalInformation.put("userId", userAuthentication.getUserId());
-            additionalInformation.put("userName", userAuthentication.getUserName());
-            additionalInformation.put("clientId", userAuthentication.getClientId());
+            UserDetailsDTO userDetailsDTO = (UserDetailsDTO)authentication.getUserAuthentication().getPrincipal();
+            additionalInformation.put(AuthContants.JWT_USER_ID_KEY, userDetailsDTO.getId());
+            additionalInformation.put(AuthContants.JWT_USER_NAME_KEY, userDetailsDTO.getUsername());
+            additionalInformation.put(AuthContants.JWT_CLIENT_ID_KEY, userDetailsDTO.getClientId());
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInformation);
             return accessToken;
         };
@@ -90,9 +96,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      * 使用非对称加密算法对token签名
      */
     @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter(KeyPair keyPair) {
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setKeyPair(keyPair);
+        converter.setKeyPair(keyPair());
         return converter;
     }
 

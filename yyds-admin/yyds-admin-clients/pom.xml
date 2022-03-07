@@ -17,10 +17,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>icu.oo7</groupId>
-            <artifactId>yyds-db-dependencies</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>

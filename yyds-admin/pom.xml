@@ -24,15 +24,4 @@
         <yyds.version>1.0.0</yyds.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>icu.oo7</groupId>
-                <artifactId>yyds-dependencies</artifactId>
-                <version>${yyds.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

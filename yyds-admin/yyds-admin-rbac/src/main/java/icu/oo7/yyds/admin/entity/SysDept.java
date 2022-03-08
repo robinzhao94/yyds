@@ -10,4 +10,16 @@ public class SysDept {
 
     private Long id;
 
+    private String name;
+
+    private String parentId;
+
+    private String treePath;
+
+    private Integer sort;
+
+    private Integer status;
+
+    private Boolean isDeleted;
+
 }

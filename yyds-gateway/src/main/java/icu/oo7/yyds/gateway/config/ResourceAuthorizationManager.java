@@ -27,7 +27,7 @@ import java.util.Set;
  *
  * @author peng.zhao
  */
-@Component
+//@Component
 public class ResourceAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 
     public static final String JWT_TOKEN_HEADER = "Authorization";

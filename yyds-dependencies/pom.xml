@@ -19,6 +19,7 @@
         <lombok.version>1.18.16</lombok.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <feign.okhttp.version>11.8</feign.okhttp.version>
+        <nimbus-jose-jwt.version>8.19</nimbus-jose-jwt.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +57,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jose-jwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -105,7 +111,7 @@
     <developers>
         <developer>
             <id>I002219</id>
-            <name>ZhaoPeng</name>
+            <name>赵鹏</name>
             <email>zpen_wy@163.com</email>
         </developer>
     </developers>

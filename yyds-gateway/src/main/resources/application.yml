@@ -1,5 +1,3 @@
-server:
-  port: 8090
 spring:
   application:
     name: yyds-gateway
@@ -7,12 +5,23 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        # 指定sentinel控制台的地址
+        dashboard: localhost:8080
+      scg:
+        # 自定义限流异常信息
+        fallback:
+          # 两种模式，一种是response返回文字提示信息，一种是redirect，重定向跳转，需要同时配置redirect(跳转的uri)
+          mode: response
+          response-body: '{"code": 200,"message": "请求限流，请稍后重试！"}'
+          response-status: 200
     gateway:
       discovery:
         locator:
-          # 启用自动根据服务ID生成路由
+          # 开启基于服务发现的路由规则
           enabled: true
-          # 设置路由的路径为小写的服务ID
+          # 开发服务名称小写规则
           lower-case-service-id: true
       globalcors:
         cors-configurations:
@@ -30,3 +39,13 @@ spring:
               - PATCH
             max-age: 3600
         add-to-simple-url-handler-mapping: true
+      # 路由配置
+      routes:
+        - id: yyds-admin-web # 后台管理服务的路由唯一标识
+          uri: lb://yyds-admin-web # lb 指的是从服务注册中心按照服务名寻找微服务，并遵循负载均衡策略
+          predicates:
+            - Path=/yyds-admin-web/api/** # 断言/yyds-admin-web/**形式请求路径才按当前路由规则转发
+          filters:
+            - StripPrefix=1 # 将第一层去掉
+server:
+  port: 88

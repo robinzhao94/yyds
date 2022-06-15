@@ -6,9 +6,9 @@ spring:
     name: yyds-uaa
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://121.33.190.195:48366/yyds_uaa?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: cli_users
-    password: KJDjifdf343A
+    url: jdbc:mysql://localhost:3306/yyds_uaa?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql12345
     hikari:
       # 连接池名称，HikariPool-1
       pool-name: HikariCP

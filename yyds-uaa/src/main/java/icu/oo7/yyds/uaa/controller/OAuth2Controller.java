@@ -2,7 +2,6 @@ package icu.oo7.yyds.uaa.controller;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
-import com.nimbusds.jwt.JWTClaimsSet;
 import icu.oo7.yyds.common.restful.ResponseData;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
